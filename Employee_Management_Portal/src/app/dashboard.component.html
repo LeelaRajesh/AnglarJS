@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <body>
+    <h3>Top Employees</h3>
+        <div class="grid grid-pad">
+            <a *ngFor="let emp of employees" 
+            [routerLink]="['/detail',emp.id]" class="col-1-4">
+                <div class="module">
+                <img src="{{emp.name}}.png" width="120" height="120"/>
+                </div>
+            </a>
+        </div>
+  </body>
+</html>

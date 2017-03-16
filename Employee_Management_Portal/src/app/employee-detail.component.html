@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" href="employee-detail.component.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <body>
+      <div *ngIf="curemp">
+        <h2>{{curemp.name}}'s details!</h2>
+        <img src="{{curemp.name}}.PNG" width="128" height="128"/>
+        <table>
+        <tr><td><label>ID:</label></td><td> {{curemp.id}}</td></tr> 
+        <tr><td><label>Name:</label></td><td> {{curemp.name}} </td></tr> 
+        <tr><td><label>Date of Birth:</label></td><td> {{curemp.dob}} </td></tr> 
+        <tr><td><label>Address: </label></td><td>
+        <input [(ngModel)]="curemp.address" placeholder="Address"></td></tr>
+        <tr><td><label>Likes:</label></td><td> {{curemp.likes}} 
+        <span class="clickable"><img (click)="likesIncrement(curemp)" src="../like.PNG" width="20" height="20" /></span></td></tr>
+        <tr><td><label>Dislikes: </label></td><td>{{curemp.dislikes}}
+        <span class="clickable"><img (click)="dislikesIncrement(curemp)" src="../dislike.PNG" width="20" height="20" />
+        </span></td></tr>
+        </table>
+      </div>
+      <button (click)="save()">Save</button>
+  </body>
+</html>
+
